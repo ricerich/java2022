@@ -16,12 +16,12 @@ public class User //1-1.클래스 만들기
 	
 	
 	// 2) 생성자(메소드) 만들기 ->역할: 멤버변수의 초기화(초기값 설정)
-//	User()
-//	{
-//		name = "";
-//		age = 10;
+	User()
+	{
+		name = "";
+		age = 0;
 //		System.out.println("생성자입니다!");
-//	}
+	}
 	
 	// 3) (일반멤버)메소드 만들기
 	void printName()

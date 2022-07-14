@@ -1,4 +1,4 @@
-package ex04_1;
+package ch04_1;
 
 public class GoodsTest 
 {
