@@ -24,13 +24,14 @@ public class Rectangle
 	
 	public int square()
 	{
-		return width*height;
+		return width * height;
 	}
 	
 	public void show() 
 	{
 		System.out.print("("+x+","+y+")에서 ");
 		System.out.println("크기가 "+ width +"x"+height+"인 사각형");
+		System.out.println();
 	}
 
 
