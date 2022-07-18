@@ -1,4 +1,4 @@
-package ex04.p7;
+package ex04.p07;
 
 public class Day 
 {

@@ -1,4 +1,4 @@
-package ex04.p3;
+package ex04.p03;
 
 public class Song 
 {

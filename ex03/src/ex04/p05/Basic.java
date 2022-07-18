@@ -1,10 +1,10 @@
-package ex04.p7;
+package ex04.p05;
 
 public class Basic {
 
 	public static void main(String[] args) 
 	{
-		new MonthSchedule(30).run();
+		new CircleManager().run();
 	}
 
 }
