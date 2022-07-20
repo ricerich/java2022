@@ -3,11 +3,13 @@ package ex05.p05_06_07_08;
 public class Basic {
 
 	public static void main(String[] args) {
-		ColorPoint cp = new ColorPoint(5, 5, "YELLOW");
-		cp.setXY(10, 20);
-		cp.setColor("RED");
-		String str = cp.toString();
-		System.out.println(str + "입니다.");
+		
+		//5번
+//		ColorPoint cp = new ColorPoint(5, 5, "YELLOW");
+//		cp.setXY(10, 20);
+//		cp.setColor("RED");
+//		String str = cp.toString();
+//		System.out.println(str + "입니다.");
 
 		//6번
 //		ColorPoint zeroPoint = new ColorPoint(); // BLACK 색에 (0,0) 위치의 점
@@ -33,15 +35,15 @@ public class Basic {
 //		System.out.println(p.toString() + "입니다.");
 
 		//8번
-//		PositivePoint p = new PositivePoint();
-//		p.move(10, 10);
-//		System.out.println(p.toString() + "입니다.");
-//		
-//		p.move(-5, 5); // 객체 p는 음수 공간으로 이동되지 않음
-//		System.out.println(p.toString() + "입니다.");
-//
-//		PositivePoint p2 = new PositivePoint(-10, -10);
-//		System.out.println(p2.toString() + "입니다.");
+		PositivePoint p = new PositivePoint();
+		p.move(10, 10);
+		System.out.println(p.toString() + "입니다.");
+		
+		p.move(-5, 5); // 객체 p는 음수 공간으로 이동되지 않음
+		System.out.println(p.toString() + "입니다.");
+
+		PositivePoint p2 = new PositivePoint(-10, -10);
+		System.out.println(p2.toString() + "입니다.");
 	}
 
 }
