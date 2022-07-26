@@ -5,6 +5,9 @@ import java.util.Scanner;
 public class LinkedList 
 {
 	
+	private Shape head = null;
+//	Shape link = null;
+	
 	Scanner sc = new Scanner(System.in);
 
 	//0.입력이든 삭제든 기능을 하는 메뉴
@@ -42,30 +45,80 @@ public class LinkedList
 					//종료
 					break;
 			}
-			
 		}
-		
-		
 	}
-	
-
 
 	//1.입력
-	private void insert(int type) {
-		// TODO Auto-generated method stub
+	private void insert(int type) 
+	{
+		Shape obj1 = null;
+		switch(type)
+		{
+			case 1:
+				obj1 = new Line();
+				break;
+			case 2:
+				obj1 = new Rect();
+				break;
+			case 3:
+				obj1 = new Circle();
+				break;
+		}
 		
+		if(head == null)
+			head = obj1;
+		else
+		{
+			Shape temp = head;
+			while(temp.getNext() != null)
+			{
+				temp = temp.getNext();				
+			}
+			temp.setNext(obj1);
+		}
 	}
 
 	//2.삭제
-	private void delete(int loc) {
-		// TODO Auto-generated method stub
+	private void delete(int loc) 
+	{
+		if(head ==null)
+			return;
+		
+		Shape pre, temp;
+		
+		pre = head;
+		temp = head;
+		
+		for(int i=0; i<loc; ++i)
+		{
+			pre = temp;
+			temp = temp.getNext();
+			if(temp == null)
+			{
+				System.out.println("해당위치는 너무 큽니다~!");
+				return;
+			}
+		}
+		
+		if(temp==head) //첫번째 삭제하면, 두번째를 헤드로
+			head = head.getNext();
+		else if(temp.getNext()==null) //마지막 원소일 경우, null
+			pre.setNext(null);
+		else
+			pre.setNext(temp.getNext());
 		
 	}
 	
 	
 	//3.조회:모두보기(출력)
 	private void printList() {
-		// TODO Auto-generated method stub
+		
+		while(head != null)
+		{
+			head.draw();
+			head = head.getNext();
+//			head = head.next;
+		}
 		
 	}
 }
