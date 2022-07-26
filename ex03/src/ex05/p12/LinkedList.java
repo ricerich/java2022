@@ -113,10 +113,11 @@ public class LinkedList
 	//3.조회:모두보기(출력)
 	private void printList() {
 		
-		while(head != null)
+		Shape temp = head;
+		while(temp != null)
 		{
-			head.draw();
-			head = head.getNext();
+			temp.draw();
+			temp = temp.getNext();
 //			head = head.next;
 		}
 		
