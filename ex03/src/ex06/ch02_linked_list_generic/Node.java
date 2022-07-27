@@ -1,6 +1,7 @@
 package ex06.ch02_linked_list_generic;
 
-public class Node<E> {
+public class Node<E> 
+{
 	public E item;
 	public Node<E> next;
 	

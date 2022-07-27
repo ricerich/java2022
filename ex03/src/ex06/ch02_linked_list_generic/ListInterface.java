@@ -1,6 +1,7 @@
 package ex06.ch02_linked_list_generic;
 
-public interface ListInterface<E> {
+public interface ListInterface<E> 
+{
 	public void add(int i, E x);
 	public void append(E x);
 	public E remove(int i);
