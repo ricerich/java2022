@@ -11,6 +11,7 @@ public class BinarySearchTree
 		newNode.data = x;
 		newNode.left = null;
 		newNode.right = null;
+		
 		if (p == null)
 			return newNode;
 		else if (newNode.data < p.data) {
