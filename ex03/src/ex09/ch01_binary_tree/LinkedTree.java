@@ -1,6 +1,7 @@
 package ex09.ch01_binary_tree;
 
-public class LinkedTree{
+public class LinkedTree
+{
 	private TreeNode root;
 	
 	public TreeNode makeBT(TreeNode bt1, Object data, TreeNode bt2){

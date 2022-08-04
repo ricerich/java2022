@@ -1,6 +1,7 @@
 package ex09.ch05_heap_generic;
 
-public class Heap<E extends Comparable> implements PQInterface<E> {
+public class Heap<E extends Comparable> implements PQInterface<E> 
+{
 	private E[] A;
 	private int numItems;
 

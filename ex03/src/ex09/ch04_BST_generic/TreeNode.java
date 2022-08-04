@@ -1,6 +1,7 @@
 package ex09.ch04_BST_generic;
 
-public class TreeNode {
+public class TreeNode 
+{
 	public Comparable key;
 	public TreeNode left;
 	public TreeNode right;

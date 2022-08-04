@@ -57,9 +57,9 @@ public class BinarySearchTree implements IndexInterface<TreeNode> {
  
 	private TreeNode deleteNode(TreeNode tNode) {
 	// 3가지 case
-		//    1. tNode이 단말(leap)리프 노드
-		//    2. tNode이 자식이 하나만 있음
-		//    3. tNode이 자식이 둘 있음
+		//    1. tNode이 단말(leap)리프 노드 - 차수(자식0
+		//    2. tNode이 자식이 하나만 있음 1
+		//    3. tNode이 자식이 둘 있음 2
 		if ((tNode.left == null) && (tNode.right == null))  // case 1(자식이 없음)
 			return null;  
 		else if (tNode.left == null) 	// case 2(오른자식뿐)
