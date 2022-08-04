@@ -6,21 +6,20 @@ public class Product implements Serializable {
 
 	private static final long serialVersionUID = -4274700572038677000L;
 
-	private String productId;	
-	private String pname;		
-	private Integer unitPrice; 
-	private String description;
-	private String manufacturer;
-	private String category; 	
-	private long unitsInStock;  
-	private String condition; 	
+	private String productId;	//상품 아이디
+	private String pname;		//상품명
+	private Integer unitPrice; //상품 가격
+	private String description; //상품 설명
+	private String manufacturer;//제조사
+	private String category; 	//분류
+	private long unitsInStock; //재고수 
+	private String condition; 	//신상품 or 중고품 or 재생품
 
 	public Product() {
 		super();
 	}
 
 	public Product(String productId, String pname, Integer unitPrice) {
-		super();
 		this.productId = productId;
 		this.pname = pname;
 		this.unitPrice = unitPrice;
@@ -30,16 +29,16 @@ public class Product implements Serializable {
 		return productId;
 	}
 
-	public void setProductId(String productId) {
-		this.productId = productId;
-	}
-
 	public String getPname() {
 		return pname;
 	}
 
 	public void setPname(String pname) {
 		this.pname = pname;
+	}
+
+	public void setProductId(String productId) {
+		this.productId = productId;
 	}
 
 	public Integer getUnitPrice() {
@@ -89,10 +88,4 @@ public class Product implements Serializable {
 	public void setCondition(String condition) {
 		this.condition = condition;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	
 }
