@@ -1,6 +1,6 @@
 ﻿<%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="dto.Product"%>
-<jsp:useBean id="productDAO" class="dao.ProductRepository" scope="session" />
+<%@ page import="dao.ProductRepository"%>
 <html>
 <head>
 <link rel="stylesheet" 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -14,8 +14,9 @@
 		</div>
 	</div>
 	<%
-		String id = request.getParameter("id") == null ? "P1235" : request.getParameter("id") ;
-		Product product = productDAO.getProductById(id);
+		String id = request.getParameter("id");
+		ProductRepository dao = ProductRepository.getInstance();
+		Product product = dao.getProductById(id);
 	%>
 	<div class="container">
 		<div class="row">
@@ -30,7 +31,7 @@
 				<p><a href="#" class="btn btn-info"> 상품 주문 &raquo;</a> <a	href="./products.jsp" class="btn btn-secondary"> 상품 목록 &raquo;</a>
 			</div>
 		</div>
-		<hr>
+		<hr> 
 	</div>
 	<jsp:include page="footer.jsp" />
 </body>

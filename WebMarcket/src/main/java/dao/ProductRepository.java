@@ -7,6 +7,12 @@ import dto.Product;
 public class ProductRepository {
 
 	private ArrayList<Product> listOfProducts = new ArrayList<Product>();
+	private static ProductRepository instance = new ProductRepository();
+
+	public static ProductRepository getInstance(){
+		return instance;
+	} 
+
 
 	public ProductRepository() {
 		Product phone = new Product("P1234", "iPhone 6s", 800000);
@@ -16,7 +22,7 @@ public class ProductRepository {
 		phone.setUnitsInStock(1000);
 		phone.setCondition("New");
 
-		Product notebook = new Product("P1235", "LG PC gram", 1500000);
+		Product notebook = new Product("P1235", "LG PC GRAM", 1500000);
 		notebook.setDescription("13.3-inch, IPS LED display, 5rd Generation Intel Core processors");
 		notebook.setCategory("Notebook");
 		notebook.setManufacturer("LG");
@@ -50,5 +56,9 @@ public class ProductRepository {
 			}
 		}
 		return productById;
+	}
+	
+	public void addProduct(Product product) {
+		listOfProducts.add(product);
 	}
 }
