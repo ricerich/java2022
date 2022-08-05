@@ -5,7 +5,8 @@
 
 <html>
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<!-- <link rel ="stylesheet" href ="./resources/css/bootstrap.min.css" /> -->
+<link rel="stylesheet" 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <title>상품 목록</title>
 </head>
 <body>
@@ -14,7 +15,7 @@
 		<div class="container">
 			<h1 class="display-3">상품목록</h1>
 		</div>
-	</div>
+	</div> 
 	<%
 		ProductRepository dao = ProductRepository.getInstance();
 		ArrayList<Product> listOfProducts = dao.getAllProducts();
@@ -27,6 +28,7 @@
 					Product product = listOfProducts.get(i);
 			%>
 			<div class="col-md-4">
+				<img src ="./upload2/<%=product.getFilename()%>" style ="width: 100%">
 				<h3><%=product.getPname()%></h3>
 				<p><%=product.getDescription()%>
 				<p><%=product.getUnitPrice()%>원

@@ -3,6 +3,7 @@
 <%@ page import="dao.ProductRepository"%>
 <html>
 <head>
+<!-- <link rel ="stylesheet" href ="./resources/css/bootstrap.min.css" /> -->
 <link rel="stylesheet" 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <title>상품 상세 정보</title>
 </head>
@@ -13,13 +14,16 @@
 			<h1 class="display-3">상품 정보</h1>
 		</div>
 	</div>
-	<%
+	<% 
 		String id = request.getParameter("id");
 		ProductRepository dao = ProductRepository.getInstance();
 		Product product = dao.getProductById(id);
-	%>
+	%> 
 	<div class="container">
 		<div class="row">
+			<div class ="col-md-5">
+				<img src="./upload2/<%=product.getFilename()%>" style="width: 100%" />
+			</div>
 			<div class="col-md-6">
 				<h3><%=product.getPname()%></h3>
 				<p><%=product.getDescription()%>
@@ -31,7 +35,7 @@
 				<p><a href="#" class="btn btn-info"> 상품 주문 &raquo;</a> <a	href="./products.jsp" class="btn btn-secondary"> 상품 목록 &raquo;</a>
 			</div>
 		</div>
-		<hr> 
+		<hr>
 	</div>
 	<jsp:include page="footer.jsp" />
 </body>
