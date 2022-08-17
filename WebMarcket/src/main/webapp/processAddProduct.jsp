@@ -48,6 +48,9 @@
 	String fname = (String) files.nextElement();
 	String fileName = multi.getFilesystemName(fname);
 	
+	System.out.println("fname---->"+fname);
+	System.out.println("fileName---->"+fileName);
+	
 	
 	ProductRepository dao = ProductRepository.getInstance();
 
