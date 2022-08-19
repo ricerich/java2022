@@ -1,10 +1,10 @@
 ﻿<%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="dto.Product"%>
 <%@ page import="dao.ProductRepository"%>
+<%@ page errorPage ="exceptionNoProductId.jsp"%>
 <html>
 <head>
-<!-- <link rel ="stylesheet" href ="./resources/css/bootstrap.min.css" /> -->
-<link rel="stylesheet" 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel ="stylesheet" href ="./resources/css/bootstrap.min.css" />
 <title>상품 상세 정보</title>
 </head>
 <body>
@@ -14,11 +14,11 @@
 			<h1 class="display-3">상품 정보</h1>
 		</div>
 	</div>
-	<% 
+	<%
 		String id = request.getParameter("id");
 		ProductRepository dao = ProductRepository.getInstance();
 		Product product = dao.getProductById(id);
-	%> 
+	%>
 	<div class="container">
 		<div class="row">
 			<div class ="col-md-5">
