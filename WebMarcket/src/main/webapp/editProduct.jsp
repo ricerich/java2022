@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
 <title>상품 편집</title>
 <script type="text/javascript">
+
 	function deleteConfirm(id) {
 		if (confirm("해당 상품을 삭제합니다!!") == true)
 			location.href = "./deleteProduct.jsp?id=" + id;
@@ -35,7 +36,7 @@
 				while (rs.next()) {
 			%>
 			<div class="col-md-4">
-				<img src=./upload2/<%=rs.getString("p_fileName")%>" style="width: 100%">
+				<img src="./upload2/<%=rs.getString("p_fileName")%>" style="width: 100%">
 				<h3><%=rs.getString("p_name")%></h3>
 				<p><%=rs.getString("p_description")%>
 				<p><%=rs.getString("p_UnitPrice")%>원

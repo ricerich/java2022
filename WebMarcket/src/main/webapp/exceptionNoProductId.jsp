@@ -1,11 +1,19 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=utf-8" isErrorPage="true"%>
 <html>
 <head>
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
 <title>상품 아이디 오류</title>
 </head>
 <body>
+	
 	<jsp:include page="menu.jsp" />	
+	
+	<p>오류가 발생하였습니다.
+	<p>	예외 : <%=exception%>
+	<p>	toString() : <%=exception.toString()%>
+	<p>	getClass().getName() :	<%=exception.getClass().getName()%>
+	<p>	getMessage() :	<%=exception.getMessage()%>
+	
 	<div class="jumbotron">
 		<div class="container">
 			<h2 class="alert alert-danger">해당 상품이 존재하지 않습니다.</h2>
