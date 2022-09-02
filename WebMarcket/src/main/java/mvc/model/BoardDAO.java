@@ -20,7 +20,7 @@ public class BoardDAO {
 			instance = new BoardDAO();
 		return instance;
 	}	
-	//board Å×ÀÌºíÀÇ ·¹ÄÚµå °³¼ö
+	//board í…Œì´ë¸”ì˜ ë ˆì½”ë“œ ê°œìˆ˜
 	public int getListCount(String items, String text) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -37,14 +37,15 @@ public class BoardDAO {
 		
 		try {
 			conn = DBConnection.getConnection();
-			pstmt = conn.prepareStatement(sql);
+//			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) 
 				x = rs.getInt(1);
 			
 		} catch (Exception ex) {
-			System.out.println("getListCount() ¿¡·¯: " + ex);
+			System.out.println("getListCount() ì—ëŸ¬: " + ex);
 		} finally {			
 			try {				
 				if (rs != null) 
@@ -59,7 +60,7 @@ public class BoardDAO {
 		}		
 		return x;
 	}
-	//board Å×ÀÌºíÀÇ ·¹ÄÚµå °¡Á®¿À±â
+	//board í…Œì´ë¸”ì˜ ë ˆì½”ë“œ ê°€ì ¸ì˜¤ê¸°
 	public ArrayList<BoardDTO> getBoardList(int page, int limit, String items, String text) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -80,7 +81,8 @@ public class BoardDAO {
 
 		try {
 			conn = DBConnection.getConnection();
-			pstmt = conn.prepareStatement(sql);
+//			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			rs = pstmt.executeQuery();
 
 			while (rs.absolute(index)) {
@@ -102,7 +104,7 @@ public class BoardDAO {
 			}
 			return list;
 		} catch (Exception ex) {
-			System.out.println("getBoardList() ¿¡·¯ : " + ex);
+			System.out.println("getBoardList() ì—ëŸ¬ : " + ex);
 		} finally {
 			try {
 				if (rs != null) 
@@ -117,7 +119,7 @@ public class BoardDAO {
 		}
 		return null;
 	}
-	//member Å×ÀÌºí¿¡¼­ ÀÎÁõµÈ idÀÇ »ç¿ëÀÚ¸í °¡Á®¿À±â
+	//member í…Œì´ë¸”ì—ì„œ ì¸ì¦ëœ idì˜ ì‚¬ìš©ìëª… ê°€ì ¸ì˜¤ê¸°
 	public String getLoginNameById(String id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -128,7 +130,8 @@ public class BoardDAO {
 
 		try {
 			conn = DBConnection.getConnection();
-			pstmt = conn.prepareStatement(sql);
+//			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 
@@ -137,7 +140,7 @@ public class BoardDAO {
 			
 			return name;
 		} catch (Exception ex) {
-			System.out.println("getBoardByNum() ¿¡·¯ : " + ex);
+			System.out.println("getBoardByNum() ì—ëŸ¬ : " + ex);
 		} finally {
 			try {				
 				if (rs != null) 
@@ -153,7 +156,7 @@ public class BoardDAO {
 		return null;
 	}
 
-	//board Å×ÀÌºí¿¡ »õ·Î¿î ±Û »ğÀÔÈ÷°¡
+	//board í…Œì´ë¸”ì— ìƒˆë¡œìš´ ê¸€ ì‚½ì…íˆê°€
 	public void insertBoard(BoardDTO board)  {
 
 		
@@ -165,7 +168,8 @@ public class BoardDAO {
 
 			String sql = "insert into board values(?, ?, ?, ?, ?, ?, ?, ?)";
 		
-			pstmt = conn.prepareStatement(sql);
+//			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			pstmt.setInt(1, board.getNum());
 			pstmt.setString(2, board.getId());
 			pstmt.setString(3, board.getName());
@@ -177,7 +181,7 @@ public class BoardDAO {
 
 			pstmt.executeUpdate();
 		} catch (Exception ex) {
-			System.out.println("insertBoard() ¿¡·¯ : " + ex);
+			System.out.println("insertBoard() ì—ëŸ¬ : " + ex);
 		} finally {
 			try {									
 				if (pstmt != null) 
@@ -189,7 +193,7 @@ public class BoardDAO {
 			}		
 		}		
 	} 
-	//¼±ÅÃµÈ ±ÛÀÇ Á¶È¸¼ö Áõ°¡ÇÏ±â
+	//ì„ íƒëœ ê¸€ì˜ ì¡°íšŒìˆ˜ ì¦ê°€í•˜ê¸°
 	public void updateHit(int num) {
 
 		Connection conn = null;
@@ -200,7 +204,8 @@ public class BoardDAO {
 			conn = DBConnection.getConnection();
 
 			String sql = "select hit from board where num = ? ";
-			pstmt = conn.prepareStatement(sql);
+//			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			int hit = 0;
@@ -210,12 +215,13 @@ public class BoardDAO {
 		
 
 			sql = "update board set hit=? where num=?";
-			pstmt = conn.prepareStatement(sql);		
+//			pstmt = conn.prepareStatement(sql);		
+			pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			pstmt.setInt(1, hit);
 			pstmt.setInt(2, num);
 			pstmt.executeUpdate();
 		} catch (Exception ex) {
-			System.out.println("updateHit() ¿¡·¯ : " + ex);
+			System.out.println("updateHit() ì—ëŸ¬ : " + ex);
 		} finally {
 			try {
 				if (rs != null) 
@@ -229,7 +235,7 @@ public class BoardDAO {
 			}			
 		}
 	}
-	//¼±ÅÃµÈ ±Û »ó¼¼ ³»¿ë °¡Á®¿À±â
+	//ì„ íƒëœ ê¸€ ìƒì„¸ ë‚´ìš© ê°€ì ¸ì˜¤ê¸°
 	public BoardDTO getBoardByNum(int num, int page) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -241,7 +247,8 @@ public class BoardDAO {
 
 		try {
 			conn = DBConnection.getConnection();
-			pstmt = conn.prepareStatement(sql);
+//			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 
@@ -259,7 +266,7 @@ public class BoardDAO {
 			
 			return board;
 		} catch (Exception ex) {
-			System.out.println("getBoardByNum() ¿¡·¯ : " + ex);
+			System.out.println("getBoardByNum() ì—ëŸ¬ : " + ex);
 		} finally {
 			try {
 				if (rs != null) 
@@ -274,7 +281,7 @@ public class BoardDAO {
 		}
 		return null;
 	}
-	//¼±ÅÃµÈ ±Û ³»¿ë ¼öÁ¤ÇÏ±â
+	//ì„ íƒëœ ê¸€ ë‚´ìš© ìˆ˜ì •í•˜ê¸°
 	public void updateBoard(BoardDTO board) {
 
 		Connection conn = null;
@@ -284,7 +291,8 @@ public class BoardDAO {
 			String sql = "update board set name=?, subject=?, content=? where num=?";
 
 			conn = DBConnection.getConnection();
-			pstmt = conn.prepareStatement(sql);
+//			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			
 			conn.setAutoCommit(false);
 
@@ -297,7 +305,7 @@ public class BoardDAO {
 			conn.commit();
 
 		} catch (Exception ex) {
-			System.out.println("updateBoard() ¿¡·¯ : " + ex);
+			System.out.println("updateBoard() ì—ëŸ¬ : " + ex);
 		} finally {
 			try {										
 				if (pstmt != null) 
@@ -309,7 +317,7 @@ public class BoardDAO {
 			}		
 		}
 	} 
-	//¼±ÅÃµÈ ±Û »èÁ¦ÇÏ±â
+	//ì„ íƒëœ ê¸€ ì‚­ì œí•˜ê¸°
 	public void deleteBoard(int num) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;		
@@ -318,12 +326,13 @@ public class BoardDAO {
 
 		try {
 			conn = DBConnection.getConnection();
-			pstmt = conn.prepareStatement(sql);
+//			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
 
 		} catch (Exception ex) {
-			System.out.println("deleteBoard() ¿¡·¯ : " + ex);
+			System.out.println("deleteBoard() ì—ëŸ¬ : " + ex);
 		} finally {
 			try {										
 				if (pstmt != null) 
