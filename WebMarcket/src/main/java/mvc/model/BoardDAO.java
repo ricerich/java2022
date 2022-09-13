@@ -11,9 +11,9 @@ public class BoardDAO {
 
 	private static BoardDAO instance;
 	
-	private BoardDAO() {
-		
-	}
+//	private BoardDAO() {
+//		
+//	}
 
 	public static BoardDAO getInstance() {
 		if (instance == null)
@@ -37,8 +37,7 @@ public class BoardDAO {
 		
 		try {
 			conn = DBConnection.getConnection();
-//			pstmt = conn.prepareStatement(sql);
-			pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) 
@@ -130,8 +129,7 @@ public class BoardDAO {
 
 		try {
 			conn = DBConnection.getConnection();
-//			pstmt = conn.prepareStatement(sql);
-			pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 
@@ -168,8 +166,7 @@ public class BoardDAO {
 
 			String sql = "insert into board values(?, ?, ?, ?, ?, ?, ?, ?)";
 		
-//			pstmt = conn.prepareStatement(sql);
-			pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, board.getNum());
 			pstmt.setString(2, board.getId());
 			pstmt.setString(3, board.getName());
@@ -204,8 +201,7 @@ public class BoardDAO {
 			conn = DBConnection.getConnection();
 
 			String sql = "select hit from board where num = ? ";
-//			pstmt = conn.prepareStatement(sql);
-			pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			int hit = 0;
@@ -215,8 +211,7 @@ public class BoardDAO {
 		
 
 			sql = "update board set hit=? where num=?";
-//			pstmt = conn.prepareStatement(sql);		
-			pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			pstmt = conn.prepareStatement(sql);		
 			pstmt.setInt(1, hit);
 			pstmt.setInt(2, num);
 			pstmt.executeUpdate();
@@ -247,8 +242,7 @@ public class BoardDAO {
 
 		try {
 			conn = DBConnection.getConnection();
-//			pstmt = conn.prepareStatement(sql);
-			pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 
@@ -291,8 +285,7 @@ public class BoardDAO {
 			String sql = "update board set name=?, subject=?, content=? where num=?";
 
 			conn = DBConnection.getConnection();
-//			pstmt = conn.prepareStatement(sql);
-			pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			pstmt = conn.prepareStatement(sql);
 			
 			conn.setAutoCommit(false);
 
@@ -326,8 +319,7 @@ public class BoardDAO {
 
 		try {
 			conn = DBConnection.getConnection();
-//			pstmt = conn.prepareStatement(sql);
-			pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
 
